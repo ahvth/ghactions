@@ -1,7 +1,9 @@
 name: CI
 
 on:
-  push
+  pull-request:
+    branch:
+      - main
 
 jobs:
   build:
@@ -12,5 +14,5 @@ jobs:
     - name: Run a one-line script
       run: |
         echo Hello, world!
-        echo ${{github.push.base_ref}}
-        echo ${{github.ref}}
+        echo ${{CHANGE_BRANCH}}
+        echo ${{CHANGE_TARGET}}
