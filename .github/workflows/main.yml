@@ -1,7 +1,9 @@
 name: CI
 
 on:
-  push
+  pull-request:
+    branch:
+      - main
 
 jobs:
   build:
