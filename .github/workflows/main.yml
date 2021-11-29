@@ -1,12 +1,14 @@
 name: CI
 
 on:
-  push:
+  pull_request:
     branch:
       - main
+    types: [closed]
 
 jobs:
   build:
+    if: github.event.pull_request.merged == 'true'
     runs-on: ubuntu-latest
 
     steps:
@@ -15,4 +17,4 @@ jobs:
       run: |
         echo Hello, world!
         echo ${{ github.base_ref }}
-        echo ${{github.ref}} 
+        echo ${{ github.head_ref }} 
